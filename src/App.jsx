@@ -7,6 +7,7 @@ import Breathing from './components/Breathing';
 import InstrumentMatch from './components/InstrumentMatch';
 import EmotionMatch from './components/EmotionMatch';
 import KaraokeSequence from './components/KaraokeSequence';
+import MemoryGame from './components/MemoryGame';
 
 function App() {
   const [activeTab, setActiveTab] = useState('pad');
@@ -47,6 +48,8 @@ function App() {
         return <EmotionMatch />;
       case 'karaoke-seq':
         return <KaraokeSequence />;
+      case 'memory':
+        return <MemoryGame />;
       default:
         return <RhythmicPad />;
     }
@@ -107,6 +110,12 @@ function App() {
           onClick={() => setActiveTab('karaoke-seq')}
         >
           🎤 Paso a Paso Karaoke
+        </button>
+        <button 
+          className={`tab-btn ${activeTab === 'memory' ? 'active' : ''}`}
+          onClick={() => setActiveTab('memory')}
+        >
+          🧠 Memoria Multijugador
         </button>
       </nav>
 
