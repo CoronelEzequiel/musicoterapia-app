@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Activity, Music, Wind } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Activity, Music, Wind, Maximize, Minimize } from 'lucide-react';
 import './App.css';
 import RhythmicPad from './components/RhythmicPad';
 import EmotionOrchestra from './components/EmotionOrchestra';
@@ -7,6 +7,28 @@ import Breathing from './components/Breathing';
 
 function App() {
   const [activeTab, setActiveTab] = useState('pad');
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.error(`Error attempting to enable fullscreen: ${err.message}`);
+      });
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  };
 
   const renderContent = () => {
     switch (activeTab) {
@@ -24,6 +46,15 @@ function App() {
   return (
     <div className="app-container">
       <header className="header">
+        <div className="fullscreen-controls">
+          <button 
+            onClick={toggleFullscreen} 
+            className="fullscreen-btn" 
+            title={isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"}
+          >
+            {isFullscreen ? <Minimize size={20} /> : <Maximize size={20} />}
+          </button>
+        </div>
         <h1>Musicoterapia Interactiva</h1>
         <p>Módulos de estimulación y regulación emocional</p>
       </header>
