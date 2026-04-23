@@ -6,25 +6,25 @@ const EMOTIONS = [
     id: 'alegria', 
     name: 'Alegría', 
     color: '#eab308', // Amarillo
-    audioUrl: '/audio/alegria.mp3'
+    audioUrl: import.meta.env.BASE_URL + 'audio/alegria.mp3'
   },
   { 
     id: 'tristeza', 
     name: 'Tristeza', 
     color: '#3b82f6', // Azul
-    audioUrl: '/audio/tristeza.mp3'
+    audioUrl: import.meta.env.BASE_URL + 'audio/tristeza.mp3'
   },
   { 
     id: 'enojo', 
     name: 'Enojo', 
     color: '#ef4444', // Rojo
-    audioUrl: '/audio/enojo.mp3' 
+    audioUrl: import.meta.env.BASE_URL + 'audio/enojo.mp3' 
   },
   { 
     id: 'calma', 
     name: 'Calma', 
     color: '#10b981', // Verde
-    audioUrl: '/audio/calma.mp3'
+    audioUrl: import.meta.env.BASE_URL + 'audio/calma.mp3'
   }
 ];
 
