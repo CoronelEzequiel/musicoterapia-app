@@ -4,6 +4,9 @@ import './App.css';
 import RhythmicPad from './components/RhythmicPad';
 import EmotionOrchestra from './components/EmotionOrchestra';
 import Breathing from './components/Breathing';
+import InstrumentMatch from './components/InstrumentMatch';
+import EmotionMatch from './components/EmotionMatch';
+import KaraokeSequence from './components/KaraokeSequence';
 
 function App() {
   const [activeTab, setActiveTab] = useState('pad');
@@ -38,6 +41,12 @@ function App() {
         return <EmotionOrchestra />;
       case 'breathing':
         return <Breathing />;
+      case 'instrument-match':
+        return <InstrumentMatch />;
+      case 'emotion-match':
+        return <EmotionMatch />;
+      case 'karaoke-seq':
+        return <KaraokeSequence />;
       default:
         return <RhythmicPad />;
     }
@@ -72,7 +81,7 @@ function App() {
           onClick={() => setActiveTab('emotions')}
         >
           <Music size={20} />
-          Orquesta de Emociones
+          Orquesta Emociones
         </button>
         <button 
           className={`tab-btn ${activeTab === 'breathing' ? 'active' : ''}`}
@@ -80,6 +89,24 @@ function App() {
         >
           <Wind size={20} />
           Respiración
+        </button>
+        <button 
+          className={`tab-btn ${activeTab === 'instrument-match' ? 'active' : ''}`}
+          onClick={() => setActiveTab('instrument-match')}
+        >
+          🎸 Unir Instrumentos
+        </button>
+        <button 
+          className={`tab-btn ${activeTab === 'emotion-match' ? 'active' : ''}`}
+          onClick={() => setActiveTab('emotion-match')}
+        >
+          😀 Unir Emociones
+        </button>
+        <button 
+          className={`tab-btn ${activeTab === 'karaoke-seq' ? 'active' : ''}`}
+          onClick={() => setActiveTab('karaoke-seq')}
+        >
+          🎤 Paso a Paso Karaoke
         </button>
       </nav>
 
